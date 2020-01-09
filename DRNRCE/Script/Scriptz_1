@@ -1,0 +1,84 @@
+use master
+go
+
+IF db_id('drone') IS NOT NULL
+BEGIN
+    drop database drone
+END
+
+CREATE DATABASE drone
+	ON  PRIMARY 
+	( NAME = 'drone_log', FILENAME = 'C:\Users\benoit.pierrehumbert\Documents\GitHub\MA-08_Drone\DRNRCE\Script\log\drone.mdf' , SIZE = 20480KB , MAXSIZE = 51200KB, FILEGROWTH = 1024KB )
+	LOG ON 
+	( NAME = 'drone_log', FILENAME = 'C:\Users\benoit.pierrehumbert\Documents\GitHub\MA-08_Drone\DRNRCE\Script\log\drone_log.ldf' , SIZE = 10240KB , MAXSIZE = 20480KB , FILEGROWTH = 1024KB)
+go
+
+USE drone
+go
+
+create table customers (
+	id int identity(1,1) PRIMARY KEY,
+	lastname varchar(100),
+	firstname varchar(60),
+	register_date DATE
+)
+
+create table orders (
+	id int identity(1,1) PRIMARY KEY,
+	date DATE,
+	status varchar(45),
+	customerid int FOREIGN KEY -- à vérifier
+)
+
+create table products (
+	id int identity(1,1) PRIMARY KEY,
+	mark varchar(100),
+	model varchar(45),
+	description varchar(200),
+	price FLOAT,
+	stock INT
+)
+
+create table categories (
+	id int identity(1,1) PRIMARY KEY,
+	type varchar(45)
+)
+
+create table suppliers (
+	id int identity(1,1) PRIMARY KEY,
+	name varchar(100),
+	nationality varchar(80),
+	address varchar(150),
+	head_office varchar(100)
+)
+
+create table companies (
+	id int identity(1,1) PRIMARY KEY,
+	name varchar(100),
+	nationality varchar(80),
+	address varchar(150),
+	head_office varchar(80)
+)
+
+create table employees (
+	id int identity(1,1) PRIMARY KEY,
+	lastname varchar(100),
+	firstname varchar(60),
+	address varchar(150),
+	phonenumber INT
+)
+
+create table teachers (
+	id int identity(1,1) PRIMARY KEY,
+	lastname varchar(50),
+	firstname varchar(50),
+	pourcentage_work int
+)
+ALTER TABLE teachers 
+ADD DEFAULT '100' for pourcentage_work;
+
+create table teachers_courses (
+	id int identity(1,1) PRIMARY KEY,
+	teacher_id int,
+	course_id int
+)
