@@ -6,7 +6,7 @@ BEGIN
     drop database CPNV
 END
 
---adapter le chemin aux fichiers de données et de logs
+--adapter le chemin aux fichiers de donnÃ©es et de logs
 CREATE DATABASE CPNV
 	ON  PRIMARY 
 	( NAME = 'CPNV', FILENAME = 'C:\Data\Cours\2019-2020\MA-08\semaine 3\CPNV.mdf' , SIZE = 20480KB , MAXSIZE = 51200KB, FILEGROWTH = 1024KB )
@@ -34,3 +34,4 @@ create table teachers_courses (
 	teacher_id int,
 	course_id int
 )
+"master""master""master"

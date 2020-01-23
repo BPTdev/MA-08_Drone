@@ -1,6 +1,6 @@
 USE master
 go
-IF db_id('drone') IS NOT NULL
+IF DB_ID('drone') IS NOT NULL
 BEGIN
     drop database drone
 END
@@ -31,29 +31,12 @@ create table orders (
 	serial_number INT NOT NULL
 )
 
-create table products (
-	id int identity(1,1) PRIMARY KEY,
-	mark varchar(100) NOT NULL,
-	model varchar(45) NOT NULL,
-	description varchar(200),
-	price FLOAT NOT NULL,
-	stock INT NOT NULL
-)
-
 create table providers (
 	id int identity(1,1) PRIMARY KEY,
 	name varchar(100) NOT NULL,
 	nationality varchar(80) NOT NULL,
 	address varchar(150) NOT NULL,
 	head_office varchar(100) NOT NULL
-)
-
-create table companies (
-	id int identity(1,1) PRIMARY KEY,
-	name varchar(100) NOT NULL,
-	nationality varchar(80) NOT NULL,
-	address varchar(150) NOT NULL,
-	head_office varchar(80) NOT NULL
 )
 
 create table employees (
@@ -65,25 +48,42 @@ create table employees (
 	zip INT NOT NULL,
 	post VARCHAR(80) NOT NULL,
 	email_address VARCHAR(100)
-	
+)
+
+create table companies (
+	id int identity(1,1) PRIMARY KEY,
+	name varchar(100) NOT NULL,
+	nationality varchar(80) NOT NULL,
+	address varchar(150) NOT NULL,
+	head_office varchar(80) NOT NULL
+)
+
+create table drones (
+	id int identity(1,1) PRIMARY KEY,
+	mark varchar(100) NOT NULL,
+	model varchar(45) NOT NULL,
+	description varchar(200),
+	price FLOAT NOT NULL,
+	stock INT NOT NULL,
+	nb_propellers INT NOT NULL
 )
 
 create table contain(
 	id int identity(1,1) PRIMARY KEY,
 	orders_id int FOREIGN KEY REFERENCES orders(id),
-	products_id int FOREIGN KEY REFERENCES products(id)
+	drones_id int FOREIGN KEY REFERENCES drones(id)
 )
 
 create table provide(
 	id int identity(1,1) PRIMARY KEY,
 	providers_id int FOREIGN KEY REFERENCES providers(id),
-	products_id int FOREIGN KEY REFERENCES products(id)
+	drones_id int FOREIGN KEY REFERENCES drones(id)
 )
 
 create table sell(
 	id int identity(1,1) PRIMARY KEY,
 	companies_id int FOREIGN KEY REFERENCES companies(id),
-	products_id int FOREIGN KEY REFERENCES products(id)
+	drones_id int FOREIGN KEY REFERENCES drones(id)
 )
 
 create table employ(
