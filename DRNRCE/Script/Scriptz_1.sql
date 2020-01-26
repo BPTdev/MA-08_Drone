@@ -1,6 +1,6 @@
 -- Auteurs : Benoît et Kevin (SI-CMI2a)
 -- Projet : Base de données MA-08 Semaine COM
--- Description : Construire une base de données de A à Z avec MCD, MLD, script "CreateDatabase", script "FillDatabase" et d'autres
+-- Description : Construire une base de données de A à Z avec MCD, MLD, script "CreateDatabase", script "FillDatabase"
 -- Version : 1.0
 
 drop DATABASE drone
