@@ -14,9 +14,9 @@ END
 
 CREATE DATABASE drone
 	ON  PRIMARY 
-	( NAME = 'testdrone2', FILENAME = 'C:\data\testdrone.mdf' , SIZE = 20480KB , MAXSIZE = 51200KB, FILEGROWTH = 1024KB )
+	( NAME = 'drone', FILENAME = 'C:\data\testdrone.mdf' , SIZE = 20480KB , MAXSIZE = 51200KB, FILEGROWTH = 1024KB )
 	LOG ON 
-	( NAME = 'testdrone2log', FILENAME = 'C:\data\testdronelog.ldf' , SIZE = 10240KB , MAXSIZE = 20480KB , FILEGROWTH = 1024KB)
+	( NAME = 'drone_log', FILENAME = 'C:\data\testdronelog.ldf' , SIZE = 10240KB , MAXSIZE = 20480KB , FILEGROWTH = 1024KB)
 go
 
 USE drone
