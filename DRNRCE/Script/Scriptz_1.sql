@@ -1,10 +1,4 @@
-USE master
-go
-IF DB_ID('drone') IS NOT NULL
-BEGIN
-    drop database drone
-END
-
+drop DATABASE drone
 CREATE DATABASE drone
 	-- ON  PRIMARY 
 	-- ( NAME = 'drone_log', FILENAME = 'C:\Users\benoit.pierrehumbert\Documents\GitHub\MA-08_Drone\DRNRCE\Script\log\drone.mdf' , SIZE = 20480KB , MAXSIZE = 51200KB, FILEGROWTH = 1024KB )
