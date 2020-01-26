@@ -16,7 +16,6 @@ create table customers (
 	lastname varchar(100) NOT NULL,
 	firstname varchar(60) NOT NULL,
 	register_date DATE NOT NULL,
-	zip varchar(20) NOT NULL,
 	address VARCHAR(100) NOT NULL,
 	email_address VARCHAR(100) NOT NULL,
 	country VARCHAR(80) NOT NULL
@@ -35,8 +34,7 @@ create table providers (
 	name varchar(100) NOT NULL,
 	nationality varchar(80) NOT NULL,
 	address varchar(150) NOT NULL,
-	head_office varchar(100) NOT NULL,
-	zip varchar(20) NOT NULL
+	head_office varchar(100) NOT NULL
 )
 
 create table employees (
@@ -45,7 +43,6 @@ create table employees (
 	firstname varchar(60) NOT NULL,
 	address varchar(150) NOT NULL,
 	phonenumber INT,
-	zip varchar(20) NOT NULL,
 	post VARCHAR(80) NOT NULL,
 	email_address VARCHAR(100)
 )
