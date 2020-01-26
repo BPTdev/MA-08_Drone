@@ -1,3 +1,9 @@
+-- Auteurs : Benoît et Kevin (SI-CMI2a)
+-- Projet : Base de données E-Commerce Drone pour MA-08 (2ème trimestre 2ème année)
+-- Description : Base de données d'un e-commerce de drones avec MCD, MLD et script d'insertion de données
+-- Version : 1.0
+
+
 USE master
 go
 IF DB_ID('drone') IS NOT NULL
