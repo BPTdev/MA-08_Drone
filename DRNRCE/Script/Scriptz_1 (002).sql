@@ -3,15 +3,26 @@
 -- Description : Construire une base de données de A à Z avec MCD, MLD, script "CreateDatabase", script "FillDatabase"
 -- Version : 1.0
 
-drop DATABASE drone
+use master
+go
+
+-- delete database
+IF db_id('drone') IS NOT NULL
+BEGIN
+	drop database drone
+END
 
 CREATE DATABASE drone
-	 ON  PRIMARY 
-	 ( NAME = 'drone_log', FILENAME = 'C:\log\drone.mdf' , SIZE = 20480KB , MAXSIZE = 51200KB, FILEGROWTH = 1024KB )
-	 LOG ON 
-	 ( NAME = 'drone_log', FILENAME = 'C:\log\drone_log.ldf' , SIZE = 10240KB , MAXSIZE = 20480KB , FILEGROWTH = 1024KB)
-USE drone 
+	ON  PRIMARY 
+	( NAME = 'drone', FILENAME = 'C:\data\testdrone.mdf' , SIZE = 20480KB , MAXSIZE = 51200KB, FILEGROWTH = 1024KB )
+	LOG ON 
+	( NAME = 'drone_log', FILENAME = 'C:\data\testdronelog.ldf' , SIZE = 10240KB , MAXSIZE = 20480KB , FILEGROWTH = 1024KB)
+go
+
+USE drone
 go	
+
+
 create table customers (
 	id int identity(1,1) PRIMARY KEY,
 	lastname varchar(100) NOT NULL,
@@ -20,7 +31,7 @@ create table customers (
 	address VARCHAR(100) NOT NULL,
 	email_address VARCHAR(100) NOT NULL,
 	country VARCHAR(80) NOT NULL
-)
+);
 
 create table orders (
 	id int identity(1,1) PRIMARY KEY,
@@ -28,7 +39,7 @@ create table orders (
 	status varchar(45) NOT NULL,
 	customerid int FOREIGN KEY REFERENCES customers(id),
 	serial_number INT NOT NULL
-)
+);
 
 create table providers (
 	id int identity(1,1) PRIMARY KEY,
@@ -36,7 +47,7 @@ create table providers (
 	nationality varchar(80) NOT NULL,
 	address varchar(150) NOT NULL,
 	head_office varchar(100) NOT NULL
-)
+);
 
 create table employees (
 	id int identity(1,1) PRIMARY KEY,
@@ -46,7 +57,7 @@ create table employees (
 	phonenumber INT,
 	post VARCHAR(80) NOT NULL,
 	email_address VARCHAR(100)
-)
+);
 
 create table companies (
 	id int identity(1,1) PRIMARY KEY,
@@ -54,41 +65,41 @@ create table companies (
 	nationality varchar(80) NOT NULL,
 	address varchar(150) NOT NULL,
 	head_office varchar(80) NOT NULL
-)
+);
 
 create table drones (
 	id int identity(1,1) PRIMARY KEY,
 	mark varchar(100) NOT NULL,
 	model varchar(45) NOT NULL,
-	description varchar(600),
+	description varchar(3000),
 	price FLOAT NOT NULL,
 	stock INT NOT NULL,
 	nb_propellers INT NOT NULL
-)
+);
 
 create table contain(
 	id int identity(1,1) PRIMARY KEY,
 	orders_id int FOREIGN KEY REFERENCES orders(id),
 	drones_id int FOREIGN KEY REFERENCES drones(id)
-)
+);
 
 create table provide(
 	id int identity(1,1) PRIMARY KEY,
 	providers_id int FOREIGN KEY REFERENCES providers(id),
 	drones_id int FOREIGN KEY REFERENCES drones(id)
-)
+);
 
 create table sell(
 	id int identity(1,1) PRIMARY KEY,
 	companies_id int FOREIGN KEY REFERENCES companies(id),
 	drones_id int FOREIGN KEY REFERENCES drones(id)
-)
+);
 
 create table employ(
 	id int identity(1,1) PRIMARY KEY,
 	companies_id int FOREIGN KEY REFERENCES companies(id),
 	employees_id int FOREIGN KEY REFERENCES employees(id)
-)
+);
 
 
 

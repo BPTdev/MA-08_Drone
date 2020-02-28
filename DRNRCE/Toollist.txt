@@ -1,0 +1,3 @@
+- Rendre le projet sur le commun (MA-08) -> Modèle Drone
+- Modèle Drone -> Dossier "Rendu" -> tout le reste est dedans
+- 
